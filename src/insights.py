@@ -1,10 +1,17 @@
 from src.jobs import read
 
 
+def get_unique(key, path):
+    """Get a list of unique values from a list of dicts"""
+    list = read(path)
+    return set(item[key]
+               for item in list
+               if item[key] != "")
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them"""
-    jobs = read(path)
-    return set(job["job_type"] for job in jobs)
+    return get_unique("job_type", path)
 
 
 def filter_by_job_type(jobs, job_type):
@@ -26,21 +33,8 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    """Checks all different industries and returns a list of them"""
+    return get_unique("industry", path)
 
 
 def filter_by_industry(jobs, industry):
