@@ -9,27 +9,19 @@ def get_unique(key, path):
                if item[key] != "" and item[key] != "invalid")
 
 
+def filter_by_category(key, category, jobs):
+    """Get a list of all entries from a specific category"""
+    return [job for job in jobs if job[key] == category]
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them"""
     return get_unique("job_type", path)
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    """Filters a list of jobs by job_type"""
+    return filter_by_category("job_type", job_type, jobs)
 
 
 def get_unique_industries(path):
