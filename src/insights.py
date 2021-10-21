@@ -6,7 +6,7 @@ def get_unique(key, path):
     list = read(path)
     return set(item[key]
                for item in list
-               if item[key] != "")
+               if item[key] != "" and item[key] != "invalid")
 
 
 def get_unique_job_types(path):
@@ -56,21 +56,9 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    """Get the maximum salary of all jobs"""
+    salary_list = get_unique("max_salary", path)
+    return max([int(salary) for salary in salary_list])
 
 
 def get_min_salary(path):
