@@ -62,21 +62,9 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    """Get the minimum salary of all jobs"""
+    salary_list = get_unique("min_salary", path)
+    return min([int(salary) for salary in salary_list])
 
 
 def matches_salary_range(job, salary):
