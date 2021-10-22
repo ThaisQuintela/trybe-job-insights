@@ -1,3 +1,4 @@
+import pytest
 from src.sorting import sort_by
 
 
@@ -120,3 +121,9 @@ def test_sort_by_criteria():
             "date_posted": "2021-10-18"
         }
     ]
+
+    with pytest.raises(ValueError, match="invalid sorting criteria: """):
+        sort_by(criteria_list, "")
+
+    with pytest.raises(ValueError, match="invalid sorting criteria: None"):
+        sort_by(criteria_list, None)
