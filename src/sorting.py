@@ -41,6 +41,7 @@ def min_salary_key(job):
     try:
         return int(job["min_salary"])
     except (KeyError, TypeError, ValueError):
+        print(math.inf)
         return math.inf
 
 
